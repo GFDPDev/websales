@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>{{ title }} Estado</h1>
+<form autocomplete="off" [formGroup]="form">
+  <div mat-dialog-center class="p-5">
+    <div class="text-center grid grid-rows-1">
+      <div class="grid grid-cols-1 gap-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre del Estado</mat-label>
+
+          <input
+            formControlName="name"
+            matInput
+            type="text"
+            oninput="this.value = this.value.toUpperCase()"
+          />
+          <mat-error *ngIf="form.controls['name'].hasError('required')">
+            El estado es <strong> requerido </strong>
+          </mat-error>
+
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+       
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button
+      mat-button
+      *ngIf="isCreateMode()"
+      [disabled]="form.invalid"
+      (click)="onAdd()"
+    >
+      Agregar
+    </button>
+    <button
+      mat-button
+      *ngIf="isUpdateMode()"
+      [disabled]="form.invalid"
+      (click)="onAdd()"
+    >
+      Actualizar
+    </button>
+    <button mat-button (click)="onNoClick()">Cerrar</button>
+  </div>
+</form>

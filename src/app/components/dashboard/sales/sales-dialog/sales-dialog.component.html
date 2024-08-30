@@ -1,0 +1,159 @@
+<form [formGroup]="form" *ngIf="loaded">
+    <div class="grid grid-rows-1 text-center">
+        <div class="grid col-span-1">
+            <h1 mat-dialog-title class="text-center">{{ title }} Venta</h1>
+        </div>
+    </div>
+    <mat-dialog-content mat-dialog-center class="px-5">
+        <div class="text-center grid grid-rows-1 pt-3">
+            <div class="grid grid-cols-2 gap-3">
+                <mat-form-field appearance="fill">
+                    <mat-label>Número</mat-label>
+                    <input formControlName="number" matInput type="number" />
+                    <mat-error
+                    *ngIf="form.controls['number'].hasError('required')"
+                    >
+                    El número es <strong> requerido </strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha de Registro</mat-label>
+                    <input
+                    matInput
+                    [matDatepicker]="pickerRegister"
+                    formControlName="register_date"
+                    (dateChange)="onDateChange($event, 'register_date')"
+                    />
+                    <mat-datepicker-toggle
+                    matSuffix
+                    [for]="pickerRegister"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerRegister></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="text-center grid grid-rows-1 pt-3">
+            <div class="grid grid-cols-2 gap-3">
+                <mat-form-field appearance="fill">
+                    <mat-label>Vendedor</mat-label>
+                    <input formControlName="seller" matInput type="text" />
+                    <mat-error
+                    *ngIf="form.controls['seller'].hasError('required')"
+                    >
+                    El vendedor es <strong> requerido </strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Cliente</mat-label>
+                    <input formControlName="client" matInput type="text" />
+                    <mat-error
+                    *ngIf="form.controls['client'].hasError('required')"
+                    >
+                    El cliente es <strong> requerido </strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="text-center grid grid-rows-1 pt-3">
+            <div class="grid grid-cols-2 gap-3">
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha de Pago</mat-label>
+                    <input
+                    matInput
+                    [matDatepicker]="pickerPago"
+                    formControlName="payment_date"
+                    (dateChange)="onDateChange($event, 'payment_date')"
+                    />
+                    <mat-datepicker-toggle
+                    matSuffix
+                    [for]="pickerPago"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #pickerPago></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Total</mat-label>
+                    <input formControlName="total" matInput type="number" />
+                    <mat-error
+                    *ngIf="form.controls['total'].hasError('required')"
+                    >
+                    El total es <strong> requerido </strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="text-center grid grid-rows-1 pt-3">
+            <div class="grid grid-cols-2 gap-3">
+                <mat-form-field appearance="fill">
+                    <mat-label>Guía</mat-label>
+                    <input formControlName="guide" matInput type="text" />
+                    <mat-error
+                    *ngIf="form.controls['guide'].hasError('required')"
+                    >
+                    La guía es <strong> requerida </strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Estado</mat-label>
+                    <mat-select
+                      name="id_status"
+                      formControlName="id_status"
+                      disableRipple
+                    >
+                      <mat-option
+                        *ngFor="let item of menus.status"
+                        [value]="item.id"
+                      >
+                        {{ item.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+        </div>
+        <div
+            class="text-center grid grid-rows-1 pt-3"
+        >
+            <mat-form-field appearance="fill">
+            <mat-label>Notas</mat-label>
+            <textarea
+                oninput="this.value = this.value.toUpperCase()"
+                matInput
+                formControlName="note"
+            ></textarea>
+            </mat-form-field>
+        </div>
+        <div
+        class="text-center grid grid-rows-1 pt-3"
+        >
+            <mat-form-field appearance="fill">
+            <mat-label>Comentarios</mat-label>
+            <textarea
+                oninput="this.value = this.value.toUpperCase()"
+                matInput
+                formControlName="comment"
+            ></textarea>
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions class="grid grid-flow-col grid-rows-1 justify-evenly">
+        <div>
+            <button
+            mat-button
+            *ngIf="isCreateMode()"
+            [disabled]="form.invalid"
+            (click)="onAdd()"
+          >
+            Agregar
+          </button>
+          <button
+            mat-button
+            *ngIf="isUpdateMode()"
+            [disabled]="form.invalid"
+            (click)="onAdd()"
+          >
+            Actualizar
+          </button>
+          <button mat-button (click)="onNoClick()">Cancelar</button>
+        </div>
+  
+      </mat-dialog-actions>
+</form>
