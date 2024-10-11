@@ -71,14 +71,13 @@ export class SalesComponent {
       headerName: "No.",
       field: "number",
       cellStyle: { textAlign: "center" },
-      width: 100,
+      width: 80,
     },
     {
       headerName: "Guía",
       field: "guide",
       cellStyle: { textAlign: "center" },
       width: 100,
-      hide: true,
     },
     {
       headerName: "Vendedor",
@@ -125,7 +124,6 @@ export class SalesComponent {
       field: "comment",
       cellStyle: { textAlign: "center" },
       width: 200,
-      hide: true,
     },
     {
       headerName: "",
@@ -150,12 +148,15 @@ export class SalesComponent {
   };
   public rowClassRules: RowClassRules = {
     green: 'data.id_status == 1',
-    red: 'data.id_status == 2',
-    blue: 'data.id_status == 3',
-    orange: 'data.id_status == 4',
-
+    yellow: 'data.id_status == 2 || data.id_status == 4 || data.id_status == 5',
+    red: 'data.id_status == 3',
+    orange: 'data.id_status == 6',
+    blue: 'data.id_status == 7',
+    pink: 'data.id_status == 9',
+    lightpink: 'data.id_status == 10',
 
   };
+  
   public autoSizeStrategy:
     | SizeColumnsToFitGridStrategy
     | SizeColumnsToFitProvidedWidthStrategy
