@@ -11,34 +11,38 @@
             matInput
             type="text"
             oninput="this.value = this.value.toUpperCase()"
-          />
-          <mat-error *ngIf="form.controls['name'].hasError('required')">
-            El estado es <strong> requerido </strong>
-          </mat-error>
+            />
+          @if (form.controls['name'].hasError('required')) {
+            <mat-error>
+              El estado es <strong> requerido </strong>
+            </mat-error>
+          }
 
           <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
-       
+
       </div>
     </div>
   </div>
   <div mat-dialog-actions align="end">
-    <button
-      mat-button
-      *ngIf="isCreateMode()"
-      [disabled]="form.invalid"
-      (click)="onAdd()"
-    >
-      Agregar
-    </button>
-    <button
-      mat-button
-      *ngIf="isUpdateMode()"
-      [disabled]="form.invalid"
-      (click)="onAdd()"
-    >
-      Actualizar
-    </button>
+    @if (isCreateMode()) {
+      <button
+        mat-button
+        [disabled]="form.invalid"
+        (click)="onAdd()"
+        >
+        Agregar
+      </button>
+    }
+    @if (isUpdateMode()) {
+      <button
+        mat-button
+        [disabled]="form.invalid"
+        (click)="onAdd()"
+        >
+        Actualizar
+      </button>
+    }
     <button mat-button (click)="onNoClick()">Cerrar</button>
   </div>
 </form>

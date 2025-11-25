@@ -1,50 +1,62 @@
 <h1 mat-dialog-title class="text-center"> {{ title }} Usuario</h1>
 <form [formGroup]="form">
-    <div mat-dialog-center class="p-5">
-        <div class="text-center grid grid-rows-1">
-            <div class="grid grid-cols-2 gap-3">
-                <mat-form-field appearance="fill">
-                    <mat-label>Usuario</mat-label>
-                    <input formControlName="username" oninput="this.value = this.value.toUpperCase()" matInput type="text">
-                    <mat-error *ngIf="form.controls['username'].hasError('required')">
-                        El nombre de usuario <strong> requerido </strong>
-                    </mat-error>
-                    <mat-icon matSuffix>person</mat-icon>
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                    <mat-label>Tipo</mat-label>
-                    <mat-select formControlName="profile" name="profile" disableRipple>
-                        <mat-option *ngFor="let item of profiles" [value]="item.id">
-                            {{ item.name }}
-                        </mat-option>
-                    </mat-select>
-            
-                    <mat-error *ngIf="form.controls['profile'].hasError('required')">
-                        El tipo es <strong> requerido </strong>
-                    </mat-error>
-            
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="text-center grid grid-rows-1 pt-3">
-            <mat-form-field appearance="fill">
-                <mat-label>Contraseña</mat-label>
-        
-                <input formControlName="password" matInput type="password">
-                <mat-error *ngIf="form.controls['password'].hasError('required')">
-                    La contraseña es <strong> requerida </strong>
-                </mat-error>
-        
-                <mat-icon matSuffix>password</mat-icon>
-            </mat-form-field>
-        </div>
+  <div mat-dialog-center class="p-5">
+    <div class="text-center grid grid-rows-1">
+      <div class="grid grid-cols-2 gap-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Usuario</mat-label>
+          <input formControlName="username" oninput="this.value = this.value.toUpperCase()" matInput type="text">
+          @if (form.controls['username'].hasError('required')) {
+            <mat-error>
+              El nombre de usuario <strong> requerido </strong>
+            </mat-error>
+          }
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="profile" name="profile" disableRipple>
+            @for (item of profiles; track item) {
+              <mat-option [value]="item.id">
+                {{ item.name }}
+              </mat-option>
+            }
+          </mat-select>
 
+          @if (form.controls['profile'].hasError('required')) {
+            <mat-error>
+              El tipo es <strong> requerido </strong>
+            </mat-error>
+          }
 
+        </mat-form-field>
+      </div>
     </div>
-    <div mat-dialog-actions align="end">
-        <button mat-button *ngIf="isCreateMode()" [disabled]="form.invalid" (click)="onAdd()">Agregar</button>
-        <button mat-button *ngIf="isUpdateMode()" [disabled]="form.invalid" (click)="onAdd()">Actualizar</button>
-        <button mat-button (click)="onNoClick()">Cancelar</button>
+    <div class="text-center grid grid-rows-1 pt-3">
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
 
+        <input formControlName="password" matInput type="password">
+        @if (form.controls['password'].hasError('required')) {
+          <mat-error>
+            La contraseña es <strong> requerida </strong>
+          </mat-error>
+        }
+
+        <mat-icon matSuffix>password</mat-icon>
+      </mat-form-field>
     </div>
+
+
+  </div>
+  <div mat-dialog-actions align="end">
+    @if (isCreateMode()) {
+      <button mat-button [disabled]="form.invalid" (click)="onAdd()">Agregar</button>
+    }
+    @if (isUpdateMode()) {
+      <button mat-button [disabled]="form.invalid" (click)="onAdd()">Actualizar</button>
+    }
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+
+  </div>
 </form>
