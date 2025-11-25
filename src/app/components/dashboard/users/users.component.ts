@@ -39,7 +39,7 @@ export class UsersComponent {
       width: 500,
     },
     {
-      headerName: "",
+      headerName: "Acciones",
       field: "delete",
       cellRenderer: ButtonRendererComponent,
       cellRendererParams: {
@@ -50,7 +50,7 @@ export class UsersComponent {
       },
       cellStyle: { textAlign: "center", display: "grid", justifyContent: "center"},
       flex: 1,
-      width: 80,
+      resizable: false,
       filter: false,
     },
   ];

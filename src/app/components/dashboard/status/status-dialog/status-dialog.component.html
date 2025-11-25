@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>{{ title }} Estado</h1>
-<form autocomplete="off" [formGroup]="form">
-  <div mat-dialog-center class="p-5">
+<div mat-dialog-center class="p-5">
+  <form autocomplete="off" [formGroup]="form">
     <div class="text-center grid grid-rows-1">
       <div class="grid grid-cols-1 gap-3">
         <mat-form-field appearance="fill">
@@ -11,38 +11,27 @@
             matInput
             type="text"
             oninput="this.value = this.value.toUpperCase()"
-            />
+          />
           @if (form.controls['name'].hasError('required')) {
-            <mat-error>
-              El estado es <strong> requerido </strong>
-            </mat-error>
+          <mat-error> El estado es <strong> requerido </strong> </mat-error>
           }
 
           <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
-
       </div>
     </div>
-  </div>
-  <div mat-dialog-actions align="end">
-    @if (isCreateMode()) {
-      <button
-        mat-button
-        [disabled]="form.invalid"
-        (click)="onAdd()"
-        >
-        Agregar
-      </button>
-    }
-    @if (isUpdateMode()) {
-      <button
-        mat-button
-        [disabled]="form.invalid"
-        (click)="onAdd()"
-        >
-        Actualizar
-      </button>
-    }
-    <button mat-button (click)="onNoClick()">Cerrar</button>
-  </div>
-</form>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Cerrar</button>
+
+  @if (isCreateMode()) {
+  <button matButton="filled" [disabled]="form.invalid" (click)="onAdd()">
+    Agregar
+  </button>
+  } @if (isUpdateMode()) {
+  <button matButton="filled" [disabled]="form.invalid" (click)="onAdd()">
+    Actualizar
+  </button>
+  }
+</div>

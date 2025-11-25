@@ -74,7 +74,7 @@ export class StatusChartComponent implements OnInit {
   }
   getData(){
   
-    this.mainService.getRequest({}, `:8006/chart/status`).subscribe((res: Res) => {
+    this.mainService.getRequest({}, `/chart/status`).subscribe((res: Res) => {
       if (res.error) {
         this.snackbar.open(JSON.stringify(res.data), "Aceptar", {
           duration: 4000,

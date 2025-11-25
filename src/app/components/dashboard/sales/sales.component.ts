@@ -71,7 +71,7 @@ export class SalesComponent {
       headerName: "No.",
       field: "number",
       cellStyle: { textAlign: "center" },
-      width: 80,
+      width: 120,
     },
     {
       headerName: "Guía",
@@ -111,7 +111,7 @@ export class SalesComponent {
       headerName: "Nota",
       field: "note",
       cellStyle: { textAlign: "center" },
-      width: 270,
+      width: 230,
     },
     {
       headerName: "Estado",
@@ -126,7 +126,7 @@ export class SalesComponent {
       width: 200,
     },
     {
-      headerName: "",
+      headerName: "Acciones",
       field: "delete",
       cellRenderer: ButtonRendererComponent,
       cellRendererParams: {
@@ -137,7 +137,7 @@ export class SalesComponent {
       },
       cellStyle: { textAlign: "center", display: "grid", justifyContent: "center"},
       flex: 1,
-      width: 80,
+      resizable: false,
       filter: false,
     },
   ];
@@ -236,7 +236,8 @@ export class SalesComponent {
 
     createRecord() {
       const dialogRef = this.dialog.open(SalesDialogComponent, {
-        width: '50%',
+        width: "1200px",
+        maxWidth: "95vw",
         data: null,
       });
       dialogRef.afterClosed().subscribe((result: Websale) => {
@@ -255,7 +256,8 @@ export class SalesComponent {
     }
     updateRecord(record: Websale) {
       const dialogRef = this.dialog.open(SalesDialogComponent, {
-        width: "50%",
+        width: "1200px",
+        maxWidth: "95vw",
         data: record,
       });
       dialogRef.afterClosed().subscribe((result: any) => {
@@ -318,7 +320,7 @@ export class SalesComponent {
       });
     }
     getCSV() {
-      this.agGrid.api.exportDataAsCsv({ allColumns: true, columnSeparator: ";" });
+      this.agGrid.api.exportDataAsCsv({ allColumns: true });
     }
     ngOnDestroy(): void {
       this.mainService.disconnectEventSource();

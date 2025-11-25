@@ -49,14 +49,16 @@
 
 
   </div>
+</form>
+
   <div mat-dialog-actions align="end">
-    @if (isCreateMode()) {
-      <button mat-button [disabled]="form.invalid" (click)="onAdd()">Agregar</button>
-    }
-    @if (isUpdateMode()) {
-      <button mat-button [disabled]="form.invalid" (click)="onAdd()">Actualizar</button>
-    }
     <button mat-button (click)="onNoClick()">Cancelar</button>
 
+    @if (isCreateMode()) {
+      <button matButton="filled" [disabled]="form.invalid" (click)="onAdd()">Agregar</button>
+    }
+    @if (isUpdateMode()) {
+      <button matButton="filled" [disabled]="form.invalid" (click)="onAdd()">Actualizar</button>
+    }
+
   </div>
-</form>

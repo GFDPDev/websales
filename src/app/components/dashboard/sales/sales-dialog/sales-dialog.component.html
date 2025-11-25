@@ -1,183 +1,163 @@
+<h1 mat-dialog-title class="text-center">{{ title }} Venta</h1>
+
 @if (loaded) {
+<mat-dialog-content mat-dialog-center class="px-5">
   <form [formGroup]="form">
-    <div class="grid grid-rows-1 text-center">
-      <div class="grid col-span-1">
-        <h1 mat-dialog-title class="text-center">{{ title }} Venta</h1>
+    <div class="text-center grid grid-rows-1 pt-3">
+      <div class="grid grid-cols-2 gap-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Número</mat-label>
+          <input formControlName="number" matInput type="number" />
+          @if (form.controls['number'].hasError('required')) {
+          <mat-error> El número es <strong> requerido </strong> </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de Registro</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerRegister"
+            formControlName="register_date"
+            (dateChange)="onDateChange($event, 'register_date')"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="pickerRegister"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerRegister></mat-datepicker>
+        </mat-form-field>
       </div>
     </div>
-    <mat-dialog-content mat-dialog-center class="px-5">
-      <div class="text-center grid grid-rows-1 pt-3">
-        <div class="grid grid-cols-2 gap-3">
-          <mat-form-field appearance="fill">
-            <mat-label>Número</mat-label>
-            <input formControlName="number" matInput type="number" />
-            @if (form.controls['number'].hasError('required')) {
-              <mat-error>
-                El número es <strong> requerido </strong>
-              </mat-error>
-            }
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Fecha de Registro</mat-label>
-            <input
-              matInput
-              [matDatepicker]="pickerRegister"
-              formControlName="register_date"
-              (dateChange)="onDateChange($event, 'register_date')"
-              />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="pickerRegister"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #pickerRegister></mat-datepicker>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="text-center grid grid-rows-1 pt-3">
-        <div class="grid grid-cols-2 gap-3">
-          <mat-form-field appearance="fill">
-            <mat-label>Vendedor</mat-label>
-            <input formControlName="seller" matInput type="text" />
-            @if (form.controls['seller'].hasError('required')) {
-              <mat-error>
-                El vendedor es <strong> requerido </strong>
-              </mat-error>
-            }
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Cliente</mat-label>
-            <input formControlName="client" matInput type="text" />
-            @if (form.controls['client'].hasError('required')) {
-              <mat-error>
-                El cliente es <strong> requerido </strong>
-              </mat-error>
-            }
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="text-center grid grid-rows-1 pt-3">
-        <div class="grid grid-cols-2 gap-3">
-          <mat-form-field appearance="fill">
-            <mat-label>Fecha de Pago</mat-label>
-            <input
-              matInput
-              [matDatepicker]="pickerPago"
-              formControlName="payment_date"
-              (dateChange)="onDateChange($event, 'payment_date')"
-              />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="pickerPago"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #pickerPago></mat-datepicker>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Total</mat-label>
-            <input formControlName="total" matInput type="number" />
-            @if (form.controls['total'].hasError('required')) {
-              <mat-error>
-                El total es <strong> requerido </strong>
-              </mat-error>
-            }
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="text-center grid grid-rows-1 pt-3">
-        <div class="grid grid-cols-2 gap-3">
-          <mat-form-field appearance="fill">
-            <mat-label>Guía</mat-label>
-            <input formControlName="guide" matInput type="text" />
-            @if (form.controls['guide'].hasError('required')) {
-              <mat-error>
-                La guía es <strong> requerida </strong>
-              </mat-error>
-            }
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Estado</mat-label>
-            <mat-select
-              name="id_status"
-              formControlName="id_status"
-              disableRipple
-              >
-              @for (item of menus.status; track item) {
-                <mat-option [value]="item.id">
-                  {{ item.name }}
-                </mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="text-center grid grid-rows-1 pt-3">
+    <div class="text-center grid grid-rows-1 pt-3">
+      <div class="grid grid-cols-2 gap-3">
         <mat-form-field appearance="fill">
-          <mat-label>Estado de Pago En Tienda</mat-label>
+          <mat-label>Vendedor</mat-label>
+          <input formControlName="seller" matInput type="text" />
+          @if (form.controls['seller'].hasError('required')) {
+          <mat-error> El vendedor es <strong> requerido </strong> </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Cliente</mat-label>
+          <input formControlName="client" matInput type="text" />
+          @if (form.controls['client'].hasError('required')) {
+          <mat-error> El cliente es <strong> requerido </strong> </mat-error>
+          }
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="text-center grid grid-rows-1 pt-3">
+      <div class="grid grid-cols-2 gap-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha de Pago</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerPago"
+            formControlName="payment_date"
+            (dateChange)="onDateChange($event, 'payment_date')"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="pickerPago"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerPago></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Total</mat-label>
+          <input formControlName="total" matInput type="number" />
+          @if (form.controls['total'].hasError('required')) {
+          <mat-error> El total es <strong> requerido </strong> </mat-error>
+          }
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="text-center grid grid-rows-1 pt-3">
+      <div class="grid grid-cols-2 gap-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Guía</mat-label>
+          <input formControlName="guide" matInput type="text" />
+          @if (form.controls['guide'].hasError('required')) {
+          <mat-error> La guía es <strong> requerida </strong> </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Estado</mat-label>
           <mat-select
-            name="payment_status"
-            formControlName="payment_status"
+            name="id_status"
+            formControlName="id_status"
             disableRipple
-            >
-            @for (item of paymentStatuses; track item) {
-              <mat-option [value]="item.id">
-                {{ item.name }}
-              </mat-option>
+          >
+            @for (item of menus.status; track item) {
+            <mat-option [value]="item.id">
+              {{ item.name }}
+            </mat-option>
             }
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="text-center grid grid-rows-1 pt-3">
-        <mat-form-field appearance="fill">
-          <mat-label>Información de Pago en Tienda</mat-label>
-          <textarea
-            oninput="this.value = this.value.toUpperCase()"
-            matInput
-            formControlName="payment_info"
-          ></textarea>
-        </mat-form-field>
-      </div>
-      <div class="text-center grid grid-rows-1 pt-3">
-        <mat-form-field appearance="fill">
-          <mat-label>Notas</mat-label>
-          <textarea
-            oninput="this.value = this.value.toUpperCase()"
-            matInput
-            formControlName="note"
-          ></textarea>
-        </mat-form-field>
-      </div>
-      <div class="text-center grid grid-rows-1 pt-3">
-        <mat-form-field appearance="fill">
-          <mat-label>Comentarios</mat-label>
-          <textarea
-            oninput="this.value = this.value.toUpperCase()"
-            matInput
-            formControlName="comment"
-          ></textarea>
-        </mat-form-field>
-      </div>
-    </mat-dialog-content>
-    <mat-dialog-actions class="grid grid-flow-col grid-rows-1 justify-evenly">
-      <div>
-        @if (isCreateMode()) {
-          <button
-            mat-button
-            [disabled]="form.invalid"
-            (click)="onAdd()"
-            >
-            Agregar
-          </button>
-        }
-        @if (isUpdateMode()) {
-          <button
-            mat-button
-            [disabled]="form.invalid"
-            (click)="onAdd()"
-            >
-            Actualizar
-          </button>
-        }
-        <button mat-button (click)="onNoClick()">Cancelar</button>
-      </div>
-    </mat-dialog-actions>
+    </div>
+    <div class="text-center grid grid-rows-1 pt-3">
+      <mat-form-field appearance="fill">
+        <mat-label>Estado de Pago En Tienda</mat-label>
+        <mat-select
+          name="payment_status"
+          formControlName="payment_status"
+          disableRipple
+        >
+          @for (item of paymentStatuses; track item) {
+          <mat-option [value]="item.id">
+            {{ item.name }}
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="text-center grid grid-rows-1 pt-3">
+      <mat-form-field appearance="fill">
+        <mat-label>Información de Pago en Tienda</mat-label>
+        <textarea
+          oninput="this.value = this.value.toUpperCase()"
+          matInput
+          formControlName="payment_info"
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <div class="text-center grid grid-rows-1 pt-3">
+      <mat-form-field appearance="fill">
+        <mat-label>Notas</mat-label>
+        <textarea
+          oninput="this.value = this.value.toUpperCase()"
+          matInput
+          formControlName="note"
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <div class="text-center grid grid-rows-1 pt-3">
+      <mat-form-field appearance="fill">
+        <mat-label>Comentarios</mat-label>
+        <textarea
+          oninput="this.value = this.value.toUpperCase()"
+          matInput
+          formControlName="comment"
+        ></textarea>
+      </mat-form-field>
+    </div>
   </form>
+</mat-dialog-content>
 }
+
+<mat-dialog-actions align="end">
+  <div>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+
+    @if (isCreateMode()) {
+    <button matButton="filled" [disabled]="form.invalid" (click)="onAdd()">
+      Agregar
+    </button>
+    } @if (isUpdateMode()) {
+    <button matButton="filled" [disabled]="form.invalid" (click)="onAdd()">
+      Actualizar
+    </button>
+    }
+  </div>
+</mat-dialog-actions>

@@ -1,10 +1,7 @@
-<div class="p-5 mx-auto">
-    <div class="grid-rows-1 text-center">
-        <h2>Lista de Ventas</h2>
-    </div>
+
     <div class="grid xl:grid-rows-1 grid-rows-3 xl:grid-cols-3 grid-cols-1 gap-5">
         <div class="text-center xl:text-left">
-            <button mat-raised-button class="mr-2 csv-button" (click)="getCSV()">
+            <button matButton="outlined" class="mr-2 csv-button" (click)="getCSV()">
             <mat-icon>save_alt</mat-icon> Descargar CSV
             </button>
         </div>
@@ -25,7 +22,7 @@
         <div class="xl:text-end text-center">
         
             <button
-            mat-raised-button
+            matButton="filled"
             class="mr-2"
             color="accent"
             (click)="fileInput.click()"
@@ -33,7 +30,7 @@
             <mat-icon>file_upload</mat-icon> Subir desde Archivo
             </button>
             <button
-            mat-raised-button
+            matButton="outlined"
             color="primary"
             (click)="createRecord()"
             >
@@ -60,4 +57,3 @@
         (gridReady)="onGridReady($event)"
         (cellClicked)="onCellClicked($event)"
         ></ag-grid-angular>
-</div>

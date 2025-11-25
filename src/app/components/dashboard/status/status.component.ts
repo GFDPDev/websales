@@ -33,7 +33,7 @@ export class StatusComponent {
       width: 500,
     },
     {
-      headerName: "",
+      headerName: "Acciones",
       field: "delete",
       cellRenderer: ButtonRendererComponent,
       cellRendererParams: {
@@ -44,7 +44,7 @@ export class StatusComponent {
       },
       cellStyle: { textAlign: "center", display: "grid", justifyContent: "center"},
       flex: 1,
-      width: 80,
+      resizable: false,
       filter: false,
     },
   ];

@@ -29,7 +29,7 @@ function createWindow() {
     win.webContents.openDevTools();
   } else {
     // Prod build
-    const indexPath = path.join(__dirname, 'dist', 'logistica_front', 'browser', 'index.html');
+    const indexPath = path.join(__dirname, 'dist', 'websales', 'browser', 'index.html');
     console.log('File loaded: ', indexPath);  // For debugging
     win.loadFile(indexPath);
     // If the download fails, try again or switch to a local file
