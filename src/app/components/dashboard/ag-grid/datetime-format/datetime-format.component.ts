@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 
 @Component({
-  selector: 'app-datetime-format',
-  template: '{{ value | date : "dd/MM/yyyy, h:mm " }}',
+    selector: 'app-datetime-format',
+    template: '{{ value | date : "dd/MM/yyyy, h:mm " }}',
+    standalone: false
 })
 export class DatetimeFormatComponent implements ICellRendererAngularComp {
   params: any;

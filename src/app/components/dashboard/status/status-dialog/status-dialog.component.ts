@@ -6,9 +6,10 @@ import { Status } from 'src/app/interfaces/Status';
 import { MainService } from 'src/app/services/main.service';
 
 @Component({
-  selector: 'app-status-dialog',
-  templateUrl: './status-dialog.component.html',
-  styleUrls: ['./status-dialog.component.scss']
+    selector: 'app-status-dialog',
+    templateUrl: './status-dialog.component.html',
+    styleUrls: ['./status-dialog.component.scss'],
+    standalone: false
 })
 export class StatusDialogComponent {
   private route = "/status";

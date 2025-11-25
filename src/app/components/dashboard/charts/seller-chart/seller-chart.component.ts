@@ -14,9 +14,10 @@ import { Res } from 'src/app/interfaces/Response';
 import { MainService } from 'src/app/services/main.service';
 
 @Component({
-  selector: 'app-seller-chart',
-  templateUrl: './seller-chart.component.html',
-  styleUrls: ['./seller-chart.component.scss']
+    selector: 'app-seller-chart',
+    templateUrl: './seller-chart.component.html',
+    styleUrls: ['./seller-chart.component.scss'],
+    standalone: false
 })
 export class SellerChartComponent implements OnInit{
   public form!: FormGroup;

@@ -11,9 +11,10 @@ import { ButtonRendererComponent } from '../ag-grid/button-renderer/button-rende
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+    selector: 'app-users',
+    templateUrl: './users.component.html',
+    styleUrls: ['./users.component.scss'],
+    standalone: false
 })
 export class UsersComponent {
   private route = "/user";

@@ -5,9 +5,10 @@ import { jwtDecode } from 'jwt-decode';
 import { User } from 'src/app/interfaces/User';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.scss'],
+    standalone: false
 })
 export class DashboardComponent {
   /** Based on the screen size, switch from standard to one column per row */

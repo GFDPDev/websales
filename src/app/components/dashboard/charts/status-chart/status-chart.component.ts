@@ -5,9 +5,10 @@ import { Res } from 'src/app/interfaces/Response';
 import { MainService } from 'src/app/services/main.service';
 
 @Component({
-  selector: 'app-status-chart',
-  templateUrl: './status-chart.component.html',
-  styleUrls: ['./status-chart.component.scss']
+    selector: 'app-status-chart',
+    templateUrl: './status-chart.component.html',
+    styleUrls: ['./status-chart.component.scss'],
+    standalone: false
 })
 export class StatusChartComponent implements OnInit {
   // Define the series (data) for the chart

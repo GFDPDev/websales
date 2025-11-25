@@ -12,9 +12,10 @@ import { Res } from 'src/app/interfaces/Response';
 import { MainService } from 'src/app/services/main.service';
 
 @Component({
-  selector: 'app-earnings-chart',
-  templateUrl: './earnings-chart.component.html',
-  styleUrls: ['./earnings-chart.component.scss']
+    selector: 'app-earnings-chart',
+    templateUrl: './earnings-chart.component.html',
+    styleUrls: ['./earnings-chart.component.scss'],
+    standalone: false
 })
 export class EarningsChartComponent implements OnInit {
   public chartSeries: ApexAxisChartSeries = [];

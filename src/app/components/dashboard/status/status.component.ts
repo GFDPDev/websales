@@ -11,9 +11,10 @@ import { ButtonRendererComponent } from '../ag-grid/button-renderer/button-rende
 import { StatusDialogComponent } from './status-dialog/status-dialog.component';
 
 @Component({
-  selector: 'app-status',
-  templateUrl: './status.component.html',
-  styleUrls: ['./status.component.scss']
+    selector: 'app-status',
+    templateUrl: './status.component.html',
+    styleUrls: ['./status.component.scss'],
+    standalone: false
 })
 export class StatusComponent {
   private route = "/status";
