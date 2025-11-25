@@ -18,7 +18,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
-      partition: 'persist:logistica',
+      partition: 'persist:websales',
       webSecurity: true,
       preload: path.join(__dirname, 'preload.js')
     },
