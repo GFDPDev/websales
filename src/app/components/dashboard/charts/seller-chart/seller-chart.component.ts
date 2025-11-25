@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import * as moment from 'moment';
+import moment from 'moment';
 import {
   ApexNonAxisChartSeries,
   ApexChart,

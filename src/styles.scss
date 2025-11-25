@@ -1,45 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
-@import "ag-grid-community/styles/ag-grid.css";
-@import "ag-grid-community/styles/ag-theme-quartz.css";
+@use '@angular/material' as mat;
+@use './theme/_theme-colors' as my-theme; // location of generated file
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* You can add global styles to this file, and also import other style files */
+html {
+  @include mat.theme((
+    color: (
+      primary: my-theme.$primary-palette,
+      tertiary: my-theme.$tertiary-palette,
+    ),
+    typography: "Work Sans",
+    density: 0,
+  ));
+}
+:root {
+  --mat-sys-body-medium-font : "Work Sans", "Helvetica Neue", sans-serif;
+  --mat-dialog-subhead-weight: 600;
+}
+html,
+body {
+  height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+body {
   margin: 0;
+  font-family: "Work Sans", "Helvetica Neue", sans-serif;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
 }
 
-/* Firefox */
-input[type="number"] {
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
-
-table,
-mat-paginator {
-  background-color: transparent !important;
-}
-.ag-theme-quartz {
-  --ag-font-size: 14px;
-  --ag-background-color: #fafafa;
-  --ag-header-background-color: #fafafa;
-}
-.ag-theme-quartz .ag-header-cell {
-  font-size: 14px;
-  font-weight: 500;
-  color: black;
-}
-.ag-header-cell-label {
-  justify-content: center !important;
-}
 .small-icon-button {
   width: 36px !important;
   height: 38px !important;

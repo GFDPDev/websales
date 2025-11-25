@@ -9,6 +9,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from './angular-material.module';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { MAT_CARD_CONFIG } from '@angular/material/card';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -20,5 +21,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
         ReactiveFormsModule,
         FormsModule,
         AngularMaterialModule,
-        NgApexchartsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        NgApexchartsModule], providers: [provideHttpClient(withInterceptorsFromDi()),  {
+                provide: MAT_CARD_CONFIG, useValue: { appearance: 'outlined' }
+            }] })
 export class AppModule { }

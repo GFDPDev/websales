@@ -5,7 +5,7 @@ import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/materia
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { jwtDecode } from 'jwt-decode';
-import * as moment from 'moment';
+import moment from 'moment';
 import { Res } from 'src/app/interfaces/Response';
 import { User } from 'src/app/interfaces/User';
 import { Websale } from 'src/app/interfaces/Websale';
