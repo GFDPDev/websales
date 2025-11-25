@@ -34,6 +34,7 @@ export class LoginComponent {
     this.form = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
+      remember: [false],
     });
     sessionStorage.clear();
   }
