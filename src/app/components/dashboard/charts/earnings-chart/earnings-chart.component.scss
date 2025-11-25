@@ -1,0 +1,23 @@
+mat-card-header {
+    display: grid;
+    align-content: center;
+    text-align: center;
+  }
+  
+mat-card-content {
+    justify-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: .0178571429em;
+}
+  
+.dashboard-card {
+    position: absolute;
+    display: grid;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+}
+  

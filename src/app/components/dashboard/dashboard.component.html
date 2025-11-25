@@ -18,6 +18,17 @@
       <mat-divider></mat-divider>
       <button
   
+      [routerLink]="['/websales/dashboard/home']"
+      [routerLinkActive]="'selected'"
+      [routerLinkActiveOptions]="{ exact: true }"
+      mat-button
+      class="menu-button"
+    >
+      <mat-icon>analytics</mat-icon>
+      <span>Gráficas</span>
+    </button>
+      <button
+  
         [routerLink]="['/websales/dashboard/sales']"
         [routerLinkActive]="'selected'"
         [routerLinkActiveOptions]="{ exact: true }"

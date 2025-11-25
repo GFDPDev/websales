@@ -14,6 +14,11 @@ import { StatusDialogComponent } from './status/status-dialog/status-dialog.comp
 import { SalesComponent } from './sales/sales.component';
 import { SalesDialogComponent } from './sales/sales-dialog/sales-dialog.component';
 import { CurrencyFormatComponent } from './ag-grid/currency-format/currency-format.component';
+import { HomeComponent } from './home/home.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { EarningsChartComponent } from './charts/earnings-chart/earnings-chart.component';
+import { SellerChartComponent } from './charts/seller-chart/seller-chart.component';
+import { StatusChartComponent } from './charts/status-chart/status-chart.component';
 
 
 
@@ -28,7 +33,11 @@ import { CurrencyFormatComponent } from './ag-grid/currency-format/currency-form
     StatusComponent,
     StatusDialogComponent,
     SalesComponent,
-    SalesDialogComponent
+    SalesDialogComponent,
+    HomeComponent,
+    EarningsChartComponent,
+    SellerChartComponent,
+    StatusChartComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +45,8 @@ import { CurrencyFormatComponent } from './ag-grid/currency-format/currency-form
     ReactiveFormsModule,
     FormsModule,
     AngularMaterialModule,
-    AgGridModule
+    AgGridModule,
+    NgApexchartsModule
   ]
 })
 export class DashboardModule { }

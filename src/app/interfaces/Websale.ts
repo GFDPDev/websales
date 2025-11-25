@@ -18,6 +18,8 @@ export interface Websale {
     note:           string;
     id_status:      number | null;
     status:         string | null;
+    payment_status: string | null;
+    payment_info: string | null;
     comment:        null | string;
 }
 

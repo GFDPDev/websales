@@ -18,7 +18,7 @@ export class UserDialogComponent {
   title: String;
   public profiles = [
     { id: 1, name: 'Recepción' },
-    { id: 2, name: 'Compras' },
+    { id: 2, name: 'Pagos' },
     { id: 3, name: 'Cuentas por Pagar' },
     { id: 4, name: 'Administrador' }
   ];

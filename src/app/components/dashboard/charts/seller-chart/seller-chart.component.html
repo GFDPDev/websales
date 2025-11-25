@@ -1,0 +1,37 @@
+<mat-card class="dashboard-card absolute">
+    <mat-card-header>
+      <mat-card-title>Ventas Por Vendedor</mat-card-title>
+      <mat-card-subtitle
+        >Ventas del Departamento Web divididas por vendedor</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content class="text-center margen justify-items-center">
+      <div class="container">
+        <div class="grid grid-rows-1">
+          <div class="col-span-1">
+            <apx-chart
+                [series]="chartSeries"
+                [chart]="chartDetails"
+                [labels]="chartLabels"
+                [responsive]="responsiveOptions"
+                [legend]="legend"
+                [colors]="colors"
+                [tooltip]="tooltip"
+                >
+            </apx-chart>
+            <mat-form-field  class="mt-5 w-75">
+              <mat-label>Día, Mes y Año</mat-label>
+  
+              <mat-date-range-input [formGroup]="form" [rangePicker]="reportPicker">
+                <input matStartDate formControlName="start_date" placeholder="Inicio" (dateChange)="onDateChange($event, 'start_date')">
+                <input matEndDate formControlName="end_date" placeholder="Fin" (dateChange)="onDateChange($event, 'end_date')">
+              </mat-date-range-input>
+  
+              <mat-datepicker-toggle matSuffix [for]="reportPicker"></mat-datepicker-toggle>
+              <mat-date-range-picker #reportPicker></mat-date-range-picker>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>

@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from './angular-material.module';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AngularMaterialModule } from './angular-material.module';
     ReactiveFormsModule,
     FormsModule,
     AngularMaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    NgApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

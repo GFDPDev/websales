@@ -46,7 +46,12 @@ export class SalesDialogComponent implements OnInit{
   loaded = false;
   checked = false;
   user: User;
-  
+  paymentStatuses = [
+    { id: 'Pendiente', name: 'Pendiente' },
+    { id: 'Pagado', name: 'Pagado' },
+    { id: 'Parcial', name: 'Parcial' },
+    { id: 'Cancelado', name: 'Cancelado' },
+  ];
 constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<SalesDialogComponent>,
@@ -57,6 +62,7 @@ constructor(
   ) {
     const user_token = sessionStorage.getItem("token")??"";
     this.user = jwtDecode(user_token);
+    console.log(this.user);
     if (this.data) {
       this.mode = 1;
       this.title = "Actualizar";
@@ -69,6 +75,8 @@ constructor(
         payment_date: [this.data.payment_date],
         total: [this.data.total, Validators.required],
         guide: [this.data.guide],
+        payment_status: [{value: this.data.payment_status, disabled: this.user.profile !== 2}],
+        payment_info: [{value: this.data.payment_info, disabled: this.user.profile !== 2}],
         note: [this.data.note, Validators.required],
         id_status: [this.data.id_status, Validators.required],
         comment: [this.data.comment],
@@ -85,6 +93,8 @@ constructor(
         payment_date: [null],
         total: [""],
         guide: [null],
+        payment_status: [{value:null, disabled: this.user.profile !== 2}],
+        payment_info: [{value:null, disabled: this.user.profile !== 2}],
         note: ["", Validators.required],
         id_status: [null],
         comment: [""],
@@ -110,7 +120,7 @@ constructor(
   }
 
   onAdd(): void {
-    const obj = this.form.value;
+    const obj = this.form.getRawValue();
     if (this.mode === 0) {
       this.mainService.postRequest(obj, this.route).subscribe((res: Res) => {
         if (res.error) {
