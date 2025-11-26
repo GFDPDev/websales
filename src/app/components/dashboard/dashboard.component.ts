@@ -31,7 +31,7 @@ export class DashboardComponent {
     this.observer.observe([Breakpoints.Handset]).subscribe((res) => {
       this.isMobile = res.matches;
       this.sidenavMode = this.isMobile ? 'over' : 'side';
-      this.opened = !this.isMobile;
+      this.opened = false;
     });
   }
   setMenuTitle(title: string) {
