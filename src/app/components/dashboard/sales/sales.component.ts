@@ -319,8 +319,9 @@ export class SalesComponent {
         console.log(res.data);
       });
     }
-    getCSV() {
-      this.agGrid.api.exportDataAsCsv({ allColumns: true });
+    async getCSV() {
+      const csvData = this.agGrid.api.getDataAsCsv({ allColumns: true });
+      await window.electronAPI.exportCSV(csvData || '', 'export');
     }
     ngOnDestroy(): void {
       this.mainService.disconnectEventSource();

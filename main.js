@@ -1,6 +1,8 @@
-const { app, BrowserWindow, screen, dialog, ipcMain, safeStorage } = require('electron');
+const { app, BrowserWindow, screen, dialog, ipcMain, safeStorage, shell } = require('electron');
 const fs = require('fs');
+const fsp = require('fs/promises');
 const path = require('path');
+const os = require('os');
 const { autoUpdater } = require('electron-updater');
 const log = require('electron-log');
 Object.assign(console, log.functions);
@@ -86,6 +88,34 @@ ipcMain.handle('delete-credentials', async () => {
   }
 });
 
+ipcMain.handle('export-csv', async (event, csvData, filename) => {
+    try {
+        // 1. Obtener la ruta del directorio temporal del sistema operativo
+        const tempDir = os.tmpdir();
+        
+        // 2. Crear una ruta de archivo única en la carpeta temporal
+        const filePath = path.join(tempDir, `${filename}-${Date.now()}.csv`);
+
+        // 3. Escribir el contenido CSV en el archivo
+        await fsp.writeFile(filePath, csvData, 'utf-8');
+        
+        // 4. Abrir el archivo automáticamente con la aplicación predeterminada del OS
+        const errorMessage = await shell.openPath(filePath);
+
+        // shell.openPath() devuelve una cadena de error si falla, o una cadena vacía si es exitoso.
+        if (errorMessage) {
+            throw new Error(`Error al intentar abrir el archivo: ${errorMessage}`);
+        }
+
+        // Devolver la ruta del archivo escrito al renderer
+        return filePath;
+
+    } catch (error) {
+        console.error('Error en el proceso principal al exportar CSV:', error);
+        // Lanza el error para que el renderer pueda manejar el fallo
+        throw error; 
+    }
+});
 
 app.whenReady().then(() => {
 createWindow();

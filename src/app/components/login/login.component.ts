@@ -11,6 +11,8 @@ declare global {
       saveCredentials: (data: any) => Promise<any>;
       getCredentials: () => Promise<any>;
       deleteCredentials: () => Promise<any>;
+      exportCSV: (csvData: string, filename: string) => Promise<string>;
+
     };
   }
 }
