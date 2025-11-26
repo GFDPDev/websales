@@ -48,7 +48,7 @@ export class LoginComponent {
       const credentials = await window.electronAPI.getCredentials();
       if (credentials) {
         this.form.patchValue({
-          usuario: credentials.username,
+          username: credentials.username,
           password: credentials.password,
           remember: true,
         });
@@ -63,7 +63,7 @@ export class LoginComponent {
         if (!res.error) {
             if (window.electronAPI) {
             if (this.form.value.remember) {
-              window.electronAPI.saveCredentials({ username: this.form.value.usuario, password: this.form.value.password });
+              window.electronAPI.saveCredentials({ username: this.form.value.username, password: this.form.value.password });
             } else {
               window.electronAPI.deleteCredentials();
             }
