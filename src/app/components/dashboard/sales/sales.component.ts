@@ -154,6 +154,7 @@ export class SalesComponent {
     blue: 'data.id_status == 7',
     pink: 'data.id_status == 9',
     lightpink: 'data.id_status == 10',
+    grey: 'data.id_status == 12',
 
   };
   
