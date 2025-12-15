@@ -9,6 +9,7 @@ import moment from 'moment';
 import { Res } from 'src/app/interfaces/Response';
 import { User } from 'src/app/interfaces/User';
 import { Websale } from 'src/app/interfaces/Websale';
+import { DataService } from 'src/app/services/data.service';
 import { MainService } from 'src/app/services/main.service';
 export const MY_FORMATS = {
   parse: {
@@ -58,7 +59,8 @@ constructor(
     @Inject(MAT_DIALOG_DATA) public data: Websale,
     private mainService: MainService,
     private snackbar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private dataService: DataService,
   ) {
     const user_token = sessionStorage.getItem("token")??"";
     this.user = jwtDecode(user_token);
@@ -104,8 +106,11 @@ constructor(
   ngOnInit(): void {
     this.getMenus();
   }
+
   getMenus() {
-    this.mainService.getRequest({}, `/menu`).subscribe((res: Res) => {
+    this.dataService
+      .getMenu()
+      .subscribe((res: Res) => {
       if (res.error) {
         this.snackbar.open(res.data, "Aceptar", {
           duration: 4000,

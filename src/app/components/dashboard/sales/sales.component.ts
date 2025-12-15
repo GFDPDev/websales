@@ -243,8 +243,6 @@ export class SalesComponent {
       });
       dialogRef.afterClosed().subscribe((result: Websale) => {
         if (result) {
-          this.getRecords();
-  
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -263,7 +261,6 @@ export class SalesComponent {
       });
       dialogRef.afterClosed().subscribe((result: any) => {
         if (result) {
-          this.getRecords()
           Swal.fire({
             position: "center",
             icon: "success",
