@@ -55,8 +55,14 @@ export class SalesComponent {
       headerName: "ID",
       field: "id",
       cellStyle: { textAlign: "center" },
-      width: 100,
+      hide: true
 
+    },
+    {
+      headerName: "No.",
+      field: "number",
+      cellStyle: { textAlign: "center" },
+      width: 120,
     },
     {
       headerName: "F. de Registro",
@@ -66,12 +72,6 @@ export class SalesComponent {
       valueFormatter: this.dateFormatter,
       width: 140,
 
-    },
-    {
-      headerName: "No.",
-      field: "number",
-      cellStyle: { textAlign: "center" },
-      width: 120,
     },
     {
       headerName: "Guía",
